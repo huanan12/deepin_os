@@ -1,0 +1,72 @@
+yamlData:
+  id: '22'
+
+  sqlData:
+    conns:
+      switch: 'mysql_deepin'
+      mysql_deepin:
+        host: '172.18.0.4'
+        port: 3306
+        user: 'root'
+        password: 'rootroot'
+        database: 'tear'
+        table: 'oks'
+      mysqls:
+        host: 'api.lemonban.com'
+        port: 3306
+        user: 'future'
+        password: 123456
+        database: 'futureloan'
+
+    databaseMakdir:
+      switch: 'database_1'
+      database_1:
+        "create database if not  exists  missjack character set utf8 collate utf8_general_ci;"
+
+    tableMakdir:
+      switch: 'table_3'
+      table_1:
+#        判断表是否存在，不存在新建，存在则不新建
+        "CREATE TABLE if not exists `emp`  (
+        `id` int(11) NOT NULL COMMENT '员工编号',
+        `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '员工姓名',
+        `dept_id` int(11) NULL DEFAULT NULL COMMENT '部门编号',
+        `leader` int(11) NULL DEFAULT NULL COMMENT '直属领导id',
+        `is_enable` int(11) NULL DEFAULT NULL COMMENT '是否在职 1在职 0离职',
+        PRIMARY KEY (`id`) USING BTREE
+        ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact"
+
+
+      table_2:
+#      如果表存在则删除后新建
+        - "drop table if exists emp;"
+        - "CREATE TABLE if not exists `emp`  (
+          `id` int(11) NOT NULL COMMENT '员工编号',
+          `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '员工姓名',
+          `dept_id` int(11) NULL DEFAULT NULL COMMENT '部门编号',
+          `leader` int(11) NULL DEFAULT NULL COMMENT '直属领导id',
+          `is_enable` int(11) NULL DEFAULT NULL COMMENT '是否在职 1在职 0离职',
+          PRIMARY KEY (`id`) USING BTREE
+          ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;"
+
+      table_3:
+        #        判断表是否存在，不存在新建，存在则不新建
+        "CREATE TABLE if not exists `transcript`  (
+        `id` int(11) NOT NULL COMMENT '学生编号',
+        `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '学生姓名',
+        `languages` int(3) NULL DEFAULT NULL COMMENT '语文',
+        `mathematical` int(3) NULL DEFAULT NULL COMMENT '数学',
+        `english` int(11) NULL DEFAULT NULL COMMENT '英语',
+        PRIMARY KEY (`id`) USING BTREE
+        ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact"
+
+      table_4:
+        #        判断表是否存在，不存在新建，存在则不新建
+        "CREATE TABLE if not exists `transcripts`  (
+        `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE COMMENT '学生编号',
+        `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '学生姓名',
+        `languages` int(3) NULL DEFAULT NULL COMMENT '语文',
+        `mathematical` int(3) NULL DEFAULT NULL COMMENT '数学',
+        `english` int(11) NULL DEFAULT NULL COMMENT '英语',
+        PRIMARY KEY (`id`) USING BTREE
+        ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact"
